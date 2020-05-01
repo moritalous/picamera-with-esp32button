@@ -10,6 +10,8 @@ cgitb.enable()
 htdocs_dir = '/home/pi/picamera-with-esp32button/RaspberryPi/htdocs/'
 jpeg_name = 'out.jpg'
 
+line_notify_token = 'xxxxxxxxxx'
+
 filename = htdocs_dir + jpeg_name
 
 def capture(filename):
@@ -23,7 +25,7 @@ def notify(filename):
   fileDataBinary = open(filename, 'rb').read()
 
   line_url = 'https://notify-api.line.me/api/notify'
-  header = {'Authorization': 'Bearer er2tC0kLfOchJgh1OiwKupuzZmY4XxRhbOyusvn05Ab'}
+  header = {'Authorization': 'Bearer '+ line_notify_token}
   data = dict(message='capture')
   files = {'imageFile': (filename, fileDataBinary, 'image/jpeg')}
 
